@@ -1,0 +1,6 @@
+[
+  { "semester": "[Fall 2026]", "company": "[Company A]", "ticker": "[AAAA]", "recommendation": "Buy" },
+  { "semester": "[Fall 2026]", "company": "[Company F]", "ticker": "[FFFF]", "recommendation": "Pass" },
+  { "semester": "[Spring 2026]", "company": "[Company B]", "ticker": "[BBBB]", "recommendation": "Buy" },
+  { "semester": "[Spring 2026]", "company": "[Company G]", "ticker": "[GGGG]", "recommendation": "Pass" }
+]

@@ -1,0 +1,202 @@
+@import "tailwindcss";
+
+/* Design tokens (sampled from the Paradigm deck; swap in exact hexes from the Paradigm codebase). */
+:root {
+  --ink: #0a0e1a;
+  --panel: #111827;
+  --line: #243049;
+  --red: #8b0000;
+  --blue: #1e3a8a;
+  --red-bright: #e84040;
+  --blue-bright: #60a5fa;
+  --white: #ffffff;
+  --mist: #c9d1dc;
+  --up: #34d399;
+  --down: #f87171;
+  --header-h: 72px;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-panel: var(--panel);
+  --color-line: var(--line);
+  --color-red: var(--red);
+  --color-blue: var(--blue);
+  --color-red-bright: var(--red-bright);
+  --color-blue-bright: var(--blue-bright);
+  --color-white: var(--white);
+  --color-mist: var(--mist);
+  --color-up: var(--up);
+  --color-down: var(--down);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --font-serif: var(--font-cormorant), ui-serif, Georgia, serif;
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+}
+
+@layer base {
+  html {
+    background: var(--ink);
+    color-scheme: dark;
+    scroll-padding-top: var(--header-h);
+  }
+  body {
+    background: var(--ink);
+    color: var(--mist);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (min-width: 768px) {
+    body { font-size: 17px; }
+  }
+  h1, h2, h3 { color: var(--white); line-height: 1.15; letter-spacing: -0.01em; }
+  h1 { font-size: 40px; font-weight: 700; }
+  h2 { font-size: 28px; font-weight: 700; }
+  h3 { font-size: 18px; font-weight: 600; }
+  @media (min-width: 768px) {
+    h1 { font-size: 64px; }
+    h2 { font-size: 40px; }
+    h3 { font-size: 20px; }
+  }
+  a { color: inherit; }
+  :focus-visible {
+    outline: 2px solid var(--blue-bright);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  ::selection { background: var(--blue); color: var(--white); }
+}
+
+@layer components {
+  .container-z {
+    width: 100%;
+    max-width: calc(1200px + 48px);
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+  .section { padding-block: 72px; }
+  @media (min-width: 768px) {
+    .section { padding-block: 120px; }
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue-bright);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 48px;
+    padding-inline: 24px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+    white-space: nowrap;
+  }
+  .btn-primary { background: var(--red); color: var(--white); }
+  .btn-primary:hover { background: #a61b1b; }
+  .btn-secondary { border: 1px solid var(--white); color: var(--white); }
+  .btn-secondary:hover { background: rgb(255 255 255 / 0.1); }
+  .btn-blue { background: var(--blue); color: var(--white); }
+  .btn-blue:hover { background: #2a4aa3; }
+
+  .card {
+    position: relative;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .card-accent::before {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    left: 0;
+    width: 4px;
+    background: var(--accent, var(--red));
+  }
+  .accent-red { --accent: var(--red); }
+  .accent-blue { --accent: var(--blue); }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    height: 32px;
+    padding-inline: 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 14px;
+    color: var(--mist);
+    white-space: nowrap;
+  }
+
+  .link {
+    color: var(--blue-bright);
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 4px;
+    transition: text-decoration-color 150ms ease;
+  }
+  .link:hover { text-decoration-color: currentColor; }
+
+  .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+  /* Fade-up on enter (see components/Reveal.tsx). */
+  .reveal {
+    transition: opacity 600ms ease, transform 600ms ease;
+    transition-delay: var(--delay, 0ms);
+  }
+  .reveal.is-pending { opacity: 0; transform: translateY(16px); transition: none; }
+
+  /* Hero load animation */
+  .hero-in { animation: fade-up 600ms ease both; animation-delay: var(--delay, 0ms); }
+  .hero-chart path.draw {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw 2s ease-out 200ms forwards;
+  }
+
+  /* Grayscale team photos, full color on hover/focus */
+  .photo-gray { filter: grayscale(1); transition: filter 300ms ease; }
+  .group:hover .photo-gray, .group:focus-visible .photo-gray, .group:focus-within .photo-gray { filter: none; }
+
+  dialog.bio::backdrop { background: rgb(10 14 26 / 0.8); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal.is-pending { opacity: 1; transform: none; }
+  .hero-in { animation: none; }
+  .hero-chart path.draw { stroke-dashoffset: 0; animation: none; }
+}
+
+/* No-JS fallback: the hamburger needs JS, so hide it; the footer carries the full nav on small screens. */
+html:not(.js) .js-only { display: none; }

@@ -1,0 +1,49 @@
+{
+  "philosophy": [
+    { "title": "Own businesses, not tickers.", "body": "We value companies on what they can earn." },
+    { "title": "Look where others don't.", "body": "A fund of engineers, scientists, and economists reads a company differently." },
+    { "title": "Write it down.", "body": "Every thesis states what would prove it wrong." }
+  ],
+  "approaches": [
+    {
+      "title": "Fundamental research",
+      "accent": "blue",
+      "body": "We start with the business: what it earns, what it is worth, and what the market is missing.",
+      "chips": ["Financial modeling", "DCF and comparables", "Industry analysis", "Earnings coverage", "Risk assessment", "Position sizing"]
+    },
+    {
+      "title": "Creative approaches",
+      "accent": "red",
+      "body": "We look for an edge where a standard model stops.",
+      "chips": ["Thematic theses", "Alternative data", "Event-driven ideas", "Quantitative screens", "Cross-disciplinary research", "Special situations"]
+    }
+  ],
+  "process": [
+    { "title": "Source", "body": "Analysts screen their coverage group for mispriced companies." },
+    { "title": "Research", "body": "A team of [3 to 4] builds the model, the thesis, and the risks over [X] weeks." },
+    { "title": "Pitch", "body": "The team presents to the full fund and takes questions." },
+    { "title": "Vote and monitor", "body": "Members vote. Approved ideas enter the portfolio and are reviewed [each semester]." }
+  ],
+  "groups": [
+    { "name": "[Technology]", "focus": "[Software, semiconductors, and internet platforms]", "lead": "[Lead name]" },
+    { "name": "[Healthcare]", "focus": "[Biotech, medical devices, and care providers]", "lead": "[Lead name]" },
+    { "name": "[Consumer]", "focus": "[Retail, brands, and consumer services]", "lead": "[Lead name]" },
+    { "name": "[Financials]", "focus": "[Banks, insurers, and fintech]", "lead": "[Lead name]" },
+    { "name": "[Industrials and Energy]", "focus": "[Manufacturing, transport, and energy]", "lead": "[Lead name]" }
+  ],
+  "analystsPerGroup": "[3 to 4]",
+  "roadmap": [
+    { "label": "Training and coverage assignment", "start": 1, "end": 3 },
+    { "label": "Idea screening", "start": 3, "end": 6 },
+    { "label": "Research and modeling", "start": 5, "end": 9 },
+    { "label": "Pitch day", "start": 10, "end": 10 },
+    { "label": "Vote and portfolio review", "start": 11, "end": 12 }
+  ],
+  "samplePitch": {
+    "company": "[Company name]",
+    "ticker": "[TICKER]",
+    "semester": "[Semester]",
+    "thesis": "[The thesis in two sentences: what the market is missing, and what would prove it.] [Second sentence.]",
+    "outcome": "[Outcome: approved or passed, and what happened next.]"
+  }
+}

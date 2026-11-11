@@ -1,0 +1,19 @@
+{
+  "asOf": "[As-of date]",
+  "benchmark": "[Benchmark]",
+  "showReturns": true,
+  "reviewCadence": "[each semester]",
+  "summary": {
+    "holdings": "[N]",
+    "sectors": "[N]",
+    "returnSinceInception": "[+X.X%]",
+    "benchmarkReturn": "[+X.X%]"
+  },
+  "holdings": [
+    { "company": "[Company A]", "ticker": "[AAAA]", "group": "[Technology]", "added": "[2025-09-15]", "thesis": "[Thesis in one line.]" },
+    { "company": "[Company B]", "ticker": "[BBBB]", "group": "[Healthcare]", "added": "[2025-03-10]", "thesis": "[Thesis in one line.]" },
+    { "company": "[Company C]", "ticker": "[CCCC]", "group": "[Consumer]", "added": "[2024-10-21]", "thesis": "[Thesis in one line.]" },
+    { "company": "[Company D]", "ticker": "[DDDD]", "group": "[Financials]", "added": "[2024-04-08]", "thesis": "[Thesis in one line.]" },
+    { "company": "[Company E]", "ticker": "[EEEE]", "group": "[Industrials and Energy]", "added": "[2023-11-13]", "thesis": "[Thesis in one line.]" }
+  ]
+}

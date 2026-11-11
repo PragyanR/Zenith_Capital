@@ -1,0 +1,28 @@
+{
+  "name": "Zenith Capital",
+  "founded": 2017,
+  "tagline": "Berkeley's student-run investment fund.",
+  "description": "Zenith Capital is a student-run investment fund at UC Berkeley and part of Alpha Epsilon Zeta. Members research, pitch, and manage real positions.",
+  "url": "https://berkeleyzenith.org",
+  "email": "aezparadigm@gmail.com",
+  "location": "Berkeley, California",
+  "parent": "Alpha Epsilon Zeta",
+  "linkedin": "https://www.linkedin.com/company/zenith-capital-berkeley",
+  "aezUrl": "https://aezberkeley.org",
+  "paradigmUrl": "https://berkeleyparadigm.org",
+  "showPortfolio": true,
+  "stats": [
+    { "value": "2017", "label": "Founded" },
+    { "value": "40+", "label": "Active members" },
+    { "value": "<10%", "label": "Acceptance rate" },
+    { "value": "100%", "label": "Placement" },
+    { "value": "200+", "label": "Alumni" },
+    { "value": "$500M+", "label": "Raised by alumni-founded startups" },
+    { "value": "[$XX,000]", "label": "Under management" }
+  ],
+  "disclosures": {
+    "educational": "Zenith Capital is a student organization. Content on this site is for educational purposes only and is not investment advice or an offer to buy or sell any security.",
+    "performance": "Past performance does not guarantee future results. All figures are unaudited and shown as of the date stated.",
+    "university": "[Confirm against the AEZ site footer] Zenith Capital is part of Alpha Epsilon Zeta, a registered student organization at UC Berkeley. Although this organization has members who are University of California students, it acts independently of the University of California and is responsible for its own site and content."
+  }
+}
