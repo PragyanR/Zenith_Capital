@@ -1,9 +1,0 @@
-{
-  "leadership": [
-    { "name": "Om Awate", "role": "[Zenith title]", "major": "[Major]", "photo": "/images/team/om-awate.jpg", "email": "omawate1@berkeley.edu", "bio": "[Short bio.]" },
-    { "name": "Sreekar Nagulapalli", "role": "[Zenith title]", "major": "[Major]", "photo": "/images/team/sreekar-nagulapalli.jpg", "email": "sreekar_nagul@berkeley.edu", "bio": "[Short bio.]" },
-    { "name": "Aadi Agrawal", "role": "[Zenith title]", "major": "[Major]", "photo": "/images/team/aadi-agrawal.jpg", "email": "aadia12@berkeley.edu", "bio": "[Short bio.]" },
-    { "name": "Sashank Gadisetti", "role": "[Zenith title]", "major": "[Major]", "photo": "/images/team/sashank-gadisetti.jpg", "email": "sgadisetti@berkeley.edu", "bio": "[Short bio.]" }
-  ],
-  "analysts": []
-}

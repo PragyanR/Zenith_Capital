@@ -1,57 +1,75 @@
 import Link from "next/link";
-import { site } from "@/lib/content";
-import Wordmark from "./Wordmark";
-import { IconLinkedIn, IconMail } from "./Icons";
+import { Wordmark } from "./Brand";
+import { disclosure, nav, site } from "@/content/site";
 
-export default function Footer({ links }: { links: { href: string; label: string }[] }) {
+export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-line bg-ink">
-      <div className="container-z grid gap-12 py-16 md:grid-cols-12">
-        <div className="md:col-span-5">
-          <Wordmark size="lg" />
-          <p className="mt-6 text-[15px] font-semibold text-white">Alpha Epsilon Zeta • UC Berkeley</p>
-          <p className="mt-1 text-[15px]">{site.location}</p>
-          <div className="mt-5 flex flex-col gap-2 text-[15px]">
-            <a href={`mailto:${site.email}`} className="link inline-flex items-center gap-2">
-              <IconMail className="size-4" /> {site.email}
-            </a>
-            <a href={site.linkedin} className="link inline-flex items-center gap-2" rel="noopener">
-              <IconLinkedIn className="size-4" /> Zenith Capital on LinkedIn
-            </a>
+    <footer className="dark">
+      <div className="wrap pb-10 pt-16 md:pt-20">
+        <div className="grid gap-12 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <Wordmark inverted />
+            <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/60">{site.tagline}</p>
+          </div>
+
+          <div className="md:col-span-2">
+            <h2 className="eyebrow eyebrow-light font-sans">The Fund</h2>
+            <ul className="mt-4 space-y-2.5 text-[15px]">
+              {nav.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="text-white/75 no-underline hover:text-white">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="md:col-span-2">
+            <h2 className="eyebrow eyebrow-light font-sans">AEZ Family</h2>
+            <ul className="mt-4 space-y-2.5 text-[15px]">
+              <li>
+                <a href={site.parent.url} target="_blank" rel="noopener noreferrer" className="text-white/75 no-underline hover:text-white">
+                  Alpha Epsilon Zeta
+                </a>
+              </li>
+              <li>
+                <a href={site.links.paradigm} target="_blank" rel="noopener noreferrer" className="text-white/75 no-underline hover:text-white">
+                  Paradigm Consulting
+                </a>
+              </li>
+              <li>
+                <a href={site.links.innovate} target="_blank" rel="noopener noreferrer" className="text-white/75 no-underline hover:text-white">
+                  Berkeley Innovate
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="md:col-span-3">
+            <h2 className="eyebrow eyebrow-light font-sans">Contact</h2>
+            <ul className="mt-4 space-y-2.5 text-[15px]">
+              <li>
+                <a href={`mailto:${site.email}`} className="break-all text-white/75 no-underline hover:text-white">
+                  {site.email}
+                </a>
+              </li>
+              <li className="text-white/50">{site.location}</li>
+              <li>
+                <a href={site.links.linkedin} target="_blank" rel="noopener noreferrer" className="text-white/75 no-underline hover:text-white">
+                  LinkedIn ↗
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <nav aria-label="Footer" className="md:col-span-3">
-          <p className="eyebrow mb-4 !text-mist">Site</p>
-          <ul className="space-y-2 text-[15px]">
-            <li><Link href="/" className="hover:text-white">Home</Link></li>
-            {links.map((l) => (
-              <li key={l.href}><Link href={l.href} className="hover:text-white">{l.label}</Link></li>
-            ))}
-            <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
-          </ul>
-        </nav>
-
-        <div className="md:col-span-4">
-          <p className="eyebrow mb-4 !text-mist">The AEZ family</p>
-          <ul className="space-y-2 text-[15px]">
-            <li><a href={site.paradigmUrl} className="link" rel="noopener">Paradigm Consulting</a></li>
-            <li><a href={site.aezUrl} className="link" rel="noopener">Alpha Epsilon Zeta</a></li>
-          </ul>
-          <p className="mt-4 text-[14px]">
-            Membership in Zenith runs through AEZ. Prospective members should start at the{" "}
-            <a href={site.aezUrl} className="link" rel="noopener">AEZ site</a>.
+        <div className="mt-16 border-t border-white/10 pt-8">
+          <p className="max-w-4xl text-[12.5px] leading-relaxed text-white/40">{disclosure}</p>
+          <p className="mt-6 text-[12.5px] text-white/40">
+            © {year} Zenith Capital · {site.parent.name}, UC Berkeley
           </p>
-        </div>
-      </div>
-
-      <div className="border-t border-line">
-        <div className="container-z space-y-3 py-8 text-[13px] leading-relaxed text-mist">
-          <p>{site.disclosures.educational}</p>
-          <p>{site.disclosures.performance}</p>
-          <p>{site.disclosures.university}</p>
-          <p className="pt-2">© {year} {site.name}. Alpha Epsilon Zeta • UC Berkeley • {site.location}.</p>
         </div>
       </div>
     </footer>

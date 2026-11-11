@@ -1,13 +1,13 @@
 import Link from "next/link";
-import PageHeader from "@/components/PageHeader";
 
 export default function NotFound() {
   return (
-    <>
-      <PageHeader eyebrow="404" title="This page isn't in the portfolio." lead="The link may be old, or the page may have moved." />
-      <div className="container-z py-16">
-        <Link href="/" className="btn btn-primary">Back to home</Link>
-      </div>
-    </>
+    <section className="wrap flex min-h-[60vh] flex-col justify-center py-24">
+      <p className="eyebrow">404</p>
+      <h1 className="display mt-5">This page isn&rsquo;t in the portfolio.</h1>
+      <Link href="/" className="link-arrow mt-10 self-start">
+        Return Home <span aria-hidden>→</span>
+      </Link>
+    </section>
   );
 }

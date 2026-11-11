@@ -1,71 +1,91 @@
 import type { Metadata } from "next";
-import PageHeader from "@/components/PageHeader";
-import SectionHeading from "@/components/SectionHeading";
-import TeamCard from "@/components/TeamCard";
-import Avatar from "@/components/Avatar";
-import Reveal from "@/components/Reveal";
-import { IconMail, IconLinkedIn } from "@/components/Icons";
-import { site, team, publicFileExists } from "@/lib/content";
+import { PageHeader } from "@/components/Blocks";
+import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Get in touch with Zenith Capital's team: alumni, speakers, sponsors, and recruiters welcome.",
-  alternates: { canonical: "/contact/" },
+  description: "Contact Zenith Capital, the investment fund of Alpha Epsilon Zeta at UC Berkeley.",
 };
+
+const audiences = [
+  {
+    title: "Alumni and advisors",
+    body: "Join the Alumni Advisory Council, review pitches, or speak to a pod about your work.",
+    subject: "Alumni Advisory Council",
+    cta: "Join the Council",
+  },
+  {
+    title: "Recruiters",
+    body: "Verify a member’s role, or ask how pods work and what our analysts produce.",
+    subject: "Recruiting inquiry",
+    cta: "Ask the Fund",
+  },
+  {
+    title: "AEZ brothers",
+    body: "Interested in a pod? Ask about training and endorsement for the coming semester.",
+    subject: "Joining a Zenith pod",
+    cta: "Join a Pod",
+  },
+];
 
 export default function ContactPage() {
   return (
     <>
-      <PageHeader eyebrow="Contact" title="Get in touch with our team members." />
+      <PageHeader
+        eyebrow="Contact"
+        title="Talk to the fund."
+        lede="Write to us. The VP of Investments or a Pod Leader will reply."
+      />
 
-      <section className="section" aria-labelledby="contacts">
-        <div className="container-z">
-          <Reveal><SectionHeading id="contacts" highlight="team">Fund team</SectionHeading></Reveal>
-          <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {team.leadership.map((m) => (
-              <TeamCard
-                key={m.name}
-                showEmail
-                member={{ ...m, bio: undefined }}
-                avatar={<Avatar name={m.name} src={m.photo} hasPhoto={publicFileExists(m.photo)} />}
-              />
+      <section className="section">
+        <div className="wrap">
+          <div className="grid gap-px border-y border-rule bg-rule md:grid-cols-3">
+            {audiences.map((a, i) => (
+              <div key={a.title} className="flex flex-col bg-paper py-10 md:px-8 md:first:pl-0 md:last:pr-0" data-reveal="inner" style={{ ["--d" as string]: `${i * 80}ms` }}>
+                <p className="num text-[13px] text-maroon">{String(i + 1).padStart(2, "0")}</p>
+                <h2 className="mt-4 text-[28px]">{a.title}</h2>
+                <p className="mt-3 flex-1 text-[15.5px] leading-relaxed text-muted">{a.body}</p>
+                <a href={`mailto:${site.email}?subject=${encodeURIComponent(`Zenith Capital: ${a.subject}`)}`} className="link-arrow mt-8 self-start">
+                  {a.cta} <span aria-hidden>→</span>
+                </a>
+              </div>
             ))}
-          </ul>
-        </div>
-      </section>
+          </div>
 
-      <section className="section border-t border-line bg-panel/40 !pt-16" aria-labelledby="general">
-        <div className="container-z grid gap-6 md:grid-cols-2">
-          <Reveal className="card card-accent accent-red p-7 pl-9 md:p-10 md:pl-12">
-            <h2 id="general" className="!text-2xl md:!text-3xl">General inquiries</h2>
-            <p className="mt-3">For anything about the fund, write to the shared inbox and the right person will reply.</p>
-            <a href={`mailto:${site.email}`} className="btn btn-primary mt-6 max-w-full !whitespace-normal break-all">
-              <IconMail className="size-4 shrink-0" /> {site.email}
-            </a>
-          </Reveal>
-          <Reveal index={1} className="card card-accent accent-blue p-7 pl-9 md:p-10 md:pl-12">
-            <h2 className="!text-2xl md:!text-3xl">Alumni and sponsors</h2>
-            <p className="mt-3">
-              Want to give a guest talk, mentor an analyst team, or support the fund? Email us with a line about yourself and
-              what you have in mind. We reply to every alumni note.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a href={`mailto:${site.email}?subject=${encodeURIComponent("Alumni / sponsor inquiry")}`} className="btn btn-blue">
-                <IconMail className="size-4" /> Email the fund
-              </a>
-              <a href={site.linkedin} className="btn btn-secondary" rel="noopener">
-                <IconLinkedIn className="size-4" /> LinkedIn
-              </a>
+          <div className="mt-20 grid gap-10 md:grid-cols-12" data-reveal>
+            <div className="md:col-span-4">
+              <p className="eyebrow">General inquiries</p>
             </div>
-          </Reveal>
+            <div className="md:col-span-8">
+              <a href={`mailto:${site.email}`} className="break-all font-serif text-[28px] text-ink underline decoration-rule decoration-1 underline-offset-8 hover:decoration-maroon md:text-[40px]">
+                {site.email}
+              </a>
+              <dl className="mt-10 grid gap-8 border-t border-rule pt-8 sm:grid-cols-3">
+                <div>
+                  <dt className="text-[12px] font-semibold uppercase tracking-[0.14em] text-faint">Organization</dt>
+                  <dd className="mt-2 text-[15.5px] text-text">
+                    <a href={site.parent.url} target="_blank" rel="noopener noreferrer" className="hover:text-maroon">
+                      {site.parent.name} ↗
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-[12px] font-semibold uppercase tracking-[0.14em] text-faint">Location</dt>
+                  <dd className="mt-2 text-[15.5px] text-text">UC Berkeley · {site.location}</dd>
+                </div>
+                <div>
+                  <dt className="text-[12px] font-semibold uppercase tracking-[0.14em] text-faint">Social</dt>
+                  <dd className="mt-2 text-[15.5px] text-text">
+                    <a href={site.links.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-maroon">
+                      LinkedIn ↗
+                    </a>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
         </div>
       </section>
-
-      <div className="border-t border-line bg-ink">
-        <p className="container-z py-6 text-center text-[14px] font-semibold uppercase tracking-[0.12em]">
-          Alpha Epsilon Zeta • UC Berkeley • {site.location}
-        </p>
-      </div>
     </>
   );
 }

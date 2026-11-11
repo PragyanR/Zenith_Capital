@@ -1,41 +1,62 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, IBM_Plex_Mono, Cormorant_Garamond } from "next/font/google";
+import { Inter, Source_Serif_4, IBM_Plex_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { site } from "@/lib/content";
-import { navLinks } from "@/lib/nav";
+import RevealObserver from "@/components/RevealObserver";
+import { site } from "@/content/site";
 import "./globals.css";
 
-// Three families, five weights total: Inter 400/600/700, Plex Mono 500, Cormorant 500.
-const inter = Inter({ subsets: ["latin"], weight: ["400", "600", "700"], display: "swap", variable: "--font-inter" });
-const plexMono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["500"], display: "swap", variable: "--font-plex-mono" });
-const cormorant = Cormorant_Garamond({ subsets: ["latin"], weight: ["500"], display: "swap", variable: "--font-cormorant" });
+const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
+const serif = Source_Serif_4({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-source-serif",
+});
+const mono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500"], display: "swap", variable: "--font-plex-mono" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Zenith Capital | UC Berkeley's Student-Run Investment Fund",
-    template: "%s | Zenith Capital at Berkeley",
+    default: "Zenith Capital | The Investment Fund of Alpha Epsilon Zeta at UC Berkeley",
+    template: "%s | Zenith Capital",
   },
   description: site.description,
-  alternates: { canonical: "/" },
   openGraph: { type: "website", siteName: site.name, locale: "en_US" },
   twitter: { card: "summary_large_image" },
 };
 
-export const viewport: Viewport = { themeColor: "#0A0E1A", colorScheme: "dark" };
+export const viewport: Viewport = { themeColor: "#fbfaf7", colorScheme: "light" };
+
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: site.name,
+  url: site.url,
+  description: site.description,
+  parentOrganization: { "@type": "Organization", name: site.parent.name, url: site.parent.url },
+  address: { "@type": "PostalAddress", addressLocality: "Berkeley", addressRegion: "CA", addressCountry: "US" },
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${plexMono.variable} ${cormorant.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${serif.variable} ${mono.variable}`} suppressHydrationWarning>
       <head>
-        {/* Marks JS as available before paint, so scroll reveals never hide content for no-JS visitors. */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
       </head>
       <body>
-        <Header links={navLinks} />
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:text-ink"
+        >
+          Skip to content
+        </a>
+        <Header />
         <main id="main">{children}</main>
-        <Footer links={navLinks} />
+        <Footer />
+        <RevealObserver />
       </body>
     </html>
   );
