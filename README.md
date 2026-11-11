@@ -1,10 +1,18 @@
-# Zenith Capital website
+# Zenith Capital
 
-Static site for Zenith Capital, the investment fund of Alpha Epsilon Zeta at UC Berkeley. Content is drawn from the *Zenith Capital Overview* deck (Sep 2025): four strategy pods, the Investment Committee, and the risk mandate.
+The investment fund of Alpha Epsilon Zeta at UC Berkeley.
 
-Next.js (App Router, static export) · TypeScript · Tailwind CSS v4.
+**Visit the site: https://pragyanr.github.io/Zenith_Capital/**
 
-## Commands
+Nothing needs to be installed to view the site; it is hosted on GitHub Pages. The rest of this page is for officers who maintain it.
+
+---
+
+## For maintainers
+
+Static site built with Next.js (App Router, static export), TypeScript, and Tailwind CSS v4. Content is drawn from the *Zenith Capital Overview* deck (Sep 2025): four strategy pods, the Investment Committee, and the risk mandate.
+
+### Commands
 
 ```bash
 npm install
@@ -13,7 +21,7 @@ npm run build    # static site in ./out
 npm run lint     # type-check
 ```
 
-## Pages
+### Pages
 
 | Route | What it covers |
 | --- | --- |
@@ -23,7 +31,7 @@ npm run lint     # type-check
 | `/letters/` | Semester investor letters (shows a request-a-copy message until `letters` has entries) |
 | `/contact/` | Alumni, recruiter, and brother inquiries |
 
-## Updating content (no component changes needed)
+### Updating content (no component changes needed)
 
 Everything editable lives in `content/`, typed so a mistake fails the build:
 
@@ -35,7 +43,7 @@ Everything editable lives in `content/`, typed so a mistake fails the build:
 
 To publish a letter, put the PDF in `public/letters/` and add an entry to `letters` in `content/people.ts`.
 
-## Deploying (free, GitHub Pages)
+### Deploying (free, GitHub Pages)
 
 The site is served from the `gh-pages` branch at https://pragyanr.github.io/Zenith_Capital/.
 
@@ -43,6 +51,6 @@ The site is served from the `gh-pages` branch at https://pragyanr.github.io/Zeni
 npm run deploy   # builds with BASE_PATH=/Zenith_Capital and pushes ./out to gh-pages
 ```
 
-One-time setup by a repo admin: **Settings → Pages → Build and deployment → Source: Deploy from a branch → `gh-pages` / root**.
+Pages must stay set to **Settings → Pages → Source: Deploy from a branch → `gh-pages` / root**. Pointing it at `main` publishes this README instead of the site.
 
 Pages serves the repo under `/Zenith_Capital`, so the Pages build sets `BASE_PATH`. Local `npm run dev` and `npm run build` use no base path. If the site moves to a custom domain or Vercel, deploy the plain build and update `url` in `content/site.ts`.
