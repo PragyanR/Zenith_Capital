@@ -35,6 +35,14 @@ Everything editable lives in `content/`, typed so a mistake fails the build:
 
 To publish a letter, put the PDF in `public/letters/` and add an entry to `letters` in `content/people.ts`.
 
-## Deploying (free)
+## Deploying (free, GitHub Pages)
 
-On Vercel, choose **Add New → Project**, import this repo, and keep the defaults; Next.js is detected automatically. When the site has a domain, update `url` in `content/site.ts`.
+The site is served from the `gh-pages` branch at https://pragyanr.github.io/Zenith_Capital/.
+
+```bash
+npm run deploy   # builds with BASE_PATH=/Zenith_Capital and pushes ./out to gh-pages
+```
+
+One-time setup by a repo admin: **Settings → Pages → Build and deployment → Source: Deploy from a branch → `gh-pages` / root**.
+
+Pages serves the repo under `/Zenith_Capital`, so the Pages build sets `BASE_PATH`. Local `npm run dev` and `npm run build` use no base path. If the site moves to a custom domain or Vercel, deploy the plain build and update `url` in `content/site.ts`.

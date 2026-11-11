@@ -17,7 +17,7 @@ const serif = Source_Serif_4({
 const mono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500"], display: "swap", variable: "--font-plex-mono" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  metadataBase: new URL(site.url + "/"),
   title: {
     default: "Zenith Capital | The Investment Fund of Alpha Epsilon Zeta at UC Berkeley",
     template: "%s | Zenith Capital",

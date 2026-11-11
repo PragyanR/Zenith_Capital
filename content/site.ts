@@ -6,8 +6,8 @@ export const site = {
   tagline: "The investment fund of Alpha Epsilon Zeta at UC Berkeley.",
   description:
     "Zenith Capital is the student-managed investment fund of Alpha Epsilon Zeta at UC Berkeley. Four strategy pods research, pitch, and manage a diversified portfolio under an Investment Committee of brothers and alumni.",
-  // Update to the custom domain once one is purchased.
-  url: "https://zenith-capital.vercel.app",
+  // Public address, no trailing slash. Update when the site moves to a custom domain.
+  url: "https://pragyanr.github.io/Zenith_Capital",
   email: "aezberkeley@gmail.com",
   location: "Berkeley, California",
   parent: {

@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "npx serve out",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "build:pages": "BASE_PATH=/Zenith_Capital next build && touch out/.nojekyll",
+    "deploy": "npm run build:pages && sh scripts/deploy-pages.sh"
   },
   "dependencies": {
     "next": "^16.4.6",

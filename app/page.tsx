@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AlumniWall, CtaBand, Factsheet, MandateList, PodGrid, ProcessSteps, SectionHead } from "@/components/Blocks";
 import { principles } from "@/content/fund";
 import { site } from "@/content/site";
+import membersPhoto from "@/public/images/members.jpg";
 
 export default function Home() {
   return (
@@ -130,7 +131,8 @@ export default function Home() {
         <div className="grid lg:grid-cols-2">
           <div className="relative min-h-[320px] lg:min-h-[560px]">
             <Image
-              src="/images/members.jpg"
+              src={membersPhoto}
+              placeholder="blur"
               alt="Brothers of Alpha Epsilon Zeta on the UC Berkeley campus"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
