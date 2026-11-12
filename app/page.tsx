@@ -11,19 +11,19 @@ const contacts = [
     title: "Alumni",
     body: "If you work in investing and want to review pitches or join the Alumni Advisory Council, email us.",
     subject: "Alumni Advisory Council",
-    cta: "Email about the council",
+    cta: "Email About the Council",
   },
   {
     title: "Recruiters",
-    body: "We can confirm a member's role on the fund and explain what pod members work on.",
+    body: "We can confirm a member’s role on the fund and explain what pod members work on.",
     subject: "Recruiting inquiry",
-    cta: "Email the fund",
+    cta: "Email the Fund",
   },
   {
-    title: "AEZ brothers",
+    title: "AEZ Brothers",
     body: "To join a pod next semester, ask about training and the endorsement process.",
     subject: "Joining a pod",
-    cta: "Email about joining",
+    cta: "Email About Joining",
   },
 ];
 
@@ -49,7 +49,7 @@ export default function Home() {
         <div className="wrap pb-16 pt-40 md:pb-24">
           <p className="eyebrow eyebrow-light rise">Alpha Epsilon Zeta · UC Berkeley</p>
           <h1 className="display rise mt-5 max-w-3xl !text-white" style={{ ["--d" as string]: "60ms" }}>
-            The investment fund of Alpha Epsilon Zeta.
+            The Investment Fund of Alpha Epsilon Zeta
           </h1>
           <p className="rise mt-7 max-w-xl text-[18px] leading-relaxed text-white/80 md:text-[20px]" style={{ ["--d" as string]: "120ms" }}>
             Brothers research and pitch investments across four strategy pods. An investment committee of officers and
@@ -88,7 +88,7 @@ export default function Home() {
       {/* Approach */}
       <section id="approach" className="section">
         <div className="wrap">
-          <SectionHead index="01" eyebrow="Approach" title="How the fund invests.">
+          <SectionHead index="01" eyebrow="Approach" title="How the Fund Invests">
             <p>
               Zenith invests part of AEZ&rsquo;s own funds. Members split into four pods, each running one strategy, and every
               position starts with research that the rest of the fund can read.
@@ -110,7 +110,7 @@ export default function Home() {
       {/* Portfolio */}
       <section id="portfolio" className="section border-t border-rule bg-white">
         <div className="wrap">
-          <SectionHead index="02" eyebrow="Portfolio" title="Target allocation by pod.">
+          <SectionHead index="02" eyebrow="Portfolio" title="Target Allocation by Pod">
             <p>
               Each pod has a target share of the portfolio. A pod&rsquo;s share can move up to 10 points from its target,
               depending on how it performs.
@@ -138,7 +138,7 @@ export default function Home() {
       {/* Risk */}
       <section className="dark section">
         <div className="wrap">
-          <SectionHead index="03" eyebrow="Risk" title="Risk limits." light>
+          <SectionHead index="03" eyebrow="Risk" title="Risk Limits" light>
             <p>
               These limits apply to every pod. The VP of Investments monitors them and is responsible for keeping the fund
               inside them.
@@ -153,8 +153,8 @@ export default function Home() {
       {/* Process */}
       <section id="process" className="section">
         <div className="wrap">
-          <SectionHead index="04" eyebrow="Process" title="From research to a committee vote.">
-            <p>Every position goes through the same five steps.</p>
+          <SectionHead index="04" eyebrow="Process" title="From Research to Committee Vote">
+            <p>Every position goes through the same 5 steps.</p>
           </SectionHead>
           <div className="mt-14 md:mt-20">
             <ProcessSteps />
@@ -165,7 +165,7 @@ export default function Home() {
       {/* Structure */}
       <section id="structure" className="section border-t border-rule bg-white">
         <div className="wrap">
-          <SectionHead index="05" eyebrow="Structure" title="Who makes the decisions.">
+          <SectionHead index="05" eyebrow="Structure" title="Who Makes the Decisions">
             <p>
               The VP of Investments is elected by AEZ each year and appoints the Pod Leaders. The VP and the Alumni Advisory
               Council form the Investment Committee, which votes on every pitch.
@@ -205,7 +205,7 @@ export default function Home() {
       {/* Alumni */}
       <section className="section border-t border-rule">
         <div className="wrap">
-          <SectionHead index="06" eyebrow="Alumni" title="Where AEZ alumni work.">
+          <SectionHead index="06" eyebrow="Alumni" title="Where AEZ Alumni Work">
             <p>
               {site.parent.name} was founded at Berkeley in {site.parent.founded}. Alumni at these firms advise the fund and
               review pitches.
@@ -225,7 +225,7 @@ export default function Home() {
           <circle cx="360" cy="14" r="9" fill="#fff" />
         </svg>
         <div className="wrap relative">
-          <SectionHead index="07" eyebrow="Contact" title="Get in touch." light>
+          <SectionHead index="07" eyebrow="Contact" title="Get in Touch" light>
             <p>
               Email{" "}
               <a href={`mailto:${site.email}`} className="text-white underline decoration-white/30 underline-offset-4 hover:decoration-white">

@@ -41,7 +41,7 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="relative text-[15px] font-medium text-muted no-underline transition-colors after:absolute after:-bottom-[27px] after:left-0 after:h-[2px] after:w-0 after:bg-maroon after:transition-[width] hover:text-ink hover:after:w-full"
+              className="relative text-[15px] font-medium text-muted no-underline transition-colors after:absolute after:-bottom-[27px] after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-maroon after:transition-transform hover:text-ink hover:after:scale-x-100"
             >
               {item.label}
             </Link>

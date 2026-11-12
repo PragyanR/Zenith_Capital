@@ -77,6 +77,9 @@
     border-radius: 2px;
   }
   ::selection { background: var(--navy); color: var(--white); }
+  @media (pointer: fine) {
+    html { overscroll-behavior: none; }
+  }
 }
 
 @layer components {

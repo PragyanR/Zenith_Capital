@@ -32,8 +32,8 @@ export default function Image() {
           <div style={{ fontSize: 34, letterSpacing: 6 }}>ZENITH CAPITAL</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontSize: 76, lineHeight: 1.05 }}>The investment fund of</div>
-          <div style={{ fontSize: 76, lineHeight: 1.05 }}>Alpha Epsilon Zeta.</div>
+          <div style={{ fontSize: 76, lineHeight: 1.05 }}>The Investment Fund of</div>
+          <div style={{ fontSize: 76, lineHeight: 1.05 }}>Alpha Epsilon Zeta</div>
           <div style={{ display: "flex", gap: 6, marginTop: 48, width: 1040 }}>
             {bars.map(([c, w]) => (
               <div key={c} style={{ width: `${w}%`, height: 16, background: c }} />

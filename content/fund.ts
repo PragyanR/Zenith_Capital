@@ -71,42 +71,42 @@ export const pods: Pod[] = [
 export const mandate = [
   {
     figure: "5%",
-    title: "Position limit",
+    title: "Position Limit",
     body: "No single investment may exceed 5% of total portfolio value at entry.",
   },
   {
     figure: "30%",
-    title: "Sector cap",
+    title: "Sector Cap",
     body: "Exposure to any one sector is capped at 30% of the portfolio.",
   },
   {
     figure: "|β| < 0.2",
-    title: "Market neutrality",
+    title: "Market Neutrality",
     body: "The Long/Short pod keeps its absolute beta below 0.2 to limit the effect of market cycles.",
   },
   {
     figure: "10%",
-    title: "Liquidity floor",
+    title: "Liquidity Floor",
     body: "At least 10% of assets stay in cash or short-duration Treasuries to cover margin and withdrawals.",
   },
   {
     figure: "±10%",
-    title: "Allocation drift",
-    body: "Each pod's share can move up to 10 points from its target, based on how the pod performs.",
+    title: "Allocation Drift",
+    body: "Each pod’s share can move up to 10 points from its target, based on how the pod performs.",
   },
 ];
 
 export const principles = [
   {
-    title: "Fundamental research",
+    title: "Fundamental Research",
     body: "Stock picks start with the company: its earnings, cash flow, and what it is worth. Share price comes last.",
   },
   {
-    title: "Defined risk limits",
+    title: "Defined Risk Limits",
     body: "Position sizes, sector exposure, and cash levels have hard limits. Pods work inside them, and the VP of Investments enforces them.",
   },
   {
-    title: "Written pitches",
+    title: "Written Pitches",
     body: "Every idea goes to the committee as a written pitch that states the thesis, the valuation, and what would make it wrong.",
   },
 ];
@@ -114,7 +114,7 @@ export const principles = [
 export const process = [
   {
     step: "01",
-    title: "Training and endorsement",
+    title: "Training and Endorsement",
     body: "Brothers complete pod training and are endorsed by their Pod Leader before they work on live ideas.",
   },
   {
@@ -124,17 +124,17 @@ export const process = [
   },
   {
     step: "03",
-    title: "Written pitch",
+    title: "Written Pitch",
     body: "Every recommendation is submitted as a written pitch of at least half a page, reviewed by the Pod Leader.",
   },
   {
     step: "04",
-    title: "Committee vote",
+    title: "Committee Vote",
     body: "The Investment Committee, the VP of Investments and the Alumni Advisory Council, votes on every pitch.",
   },
   {
     step: "05",
-    title: "Monitor and report",
+    title: "Monitor and Report",
     body: "Approved positions are sized within the mandate, monitored by the pod, and reported in the semester investor letter.",
   },
 ];
