@@ -10,7 +10,7 @@ Nothing needs to be installed to view the site; it is hosted on GitHub Pages. Th
 
 ## For maintainers
 
-Static site built with Next.js (App Router, static export), TypeScript, and Tailwind CSS v4. Content is drawn from the *Zenith Capital Overview* deck (Sep 2025): four strategy pods, the Investment Committee, and the risk mandate.
+Static site built with Next.js (App Router, static export), TypeScript, and Tailwind CSS v4. Figures come from the *Zenith Capital Overview* deck (Sep 2025).
 
 ### Commands
 
@@ -21,27 +21,16 @@ npm run build    # static site in ./out
 npm run lint     # type-check
 ```
 
-### Pages
+### Editing
 
-| Route | What it covers |
-| --- | --- |
-| `/` | Hero with target allocation, key facts, principles, the four pods, risk mandate, process, membership, alumni firms |
-| `/approach/` | Philosophy, allocation by pod, pod detail, risk management, investment process |
-| `/structure/` | Governance diagram, roles, and current officers (hidden until `officers` has entries) |
-| `/letters/` | Semester investor letters (shows a request-a-copy message until `letters` has entries) |
-| `/contact/` | Alumni, recruiter, and brother inquiries |
-
-### Updating content (no component changes needed)
-
-Everything editable lives in `content/`, typed so a mistake fails the build:
+The site is a single page (`app/page.tsx`). Text lives in `content/`:
 
 | File | What it holds |
 | --- | --- |
-| `site.ts` | Name, URL, contact email, AEZ/Paradigm/Innovate links, footer disclosure |
-| `fund.ts` | Pods and target allocations, risk mandate, principles, process, roles, alumni firms |
-| `people.ts` | Current officers and published investor letters, updated each semester |
+| `site.ts` | Name, URL, contact email, links, footer disclosure |
+| `fund.ts` | Target allocation by pod, alumni firms |
 
-To publish a letter, put the PDF in `public/letters/` and add an entry to `letters` in `content/people.ts`.
+The hero photo is `public/images/members.jpg`. Replace that file to change it.
 
 ### Deploying (free, GitHub Pages)
 

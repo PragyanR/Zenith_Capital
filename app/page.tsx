@@ -1,194 +1,131 @@
 import Image from "next/image";
-import Link from "next/link";
-import { AlumniWall, CtaBand, Factsheet, MandateList, PodGrid, ProcessSteps, SectionHead } from "@/components/Blocks";
-import { principles } from "@/content/fund";
-import { site } from "@/content/site";
-import membersPhoto from "@/public/images/members.jpg";
+import { Mark } from "@/components/Brand";
+import Clock from "@/components/Clock";
+import { alumniFirms, pods } from "@/content/fund";
+import { disclosure, site } from "@/content/site";
+import hero from "@/public/images/members.jpg";
+
+const mailto = `mailto:${site.email}?subject=Zenith%20Capital`;
 
 export default function Home() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-rule">
-        <div className="wrap grid items-center gap-14 pb-20 pt-12 md:pt-20 lg:grid-cols-12 lg:gap-10 lg:pb-28 lg:pt-24">
-          <div className="lg:col-span-7">
-            <p className="eyebrow rise">
-              The investment fund of Alpha Epsilon Zeta · UC Berkeley
-            </p>
-            <h1 className="display rise mt-6" style={{ ["--d" as string]: "60ms" }}>
-              Disciplined capital,
-              <br />
-              <em className="font-normal italic text-maroon">rigorous</em> research.
-            </h1>
-            <p className="lede rise mt-8 max-w-xl" style={{ ["--d" as string]: "120ms" }}>
-              Zenith Capital manages a portion of Alpha Epsilon Zeta&rsquo;s reserves through four strategy pods. Brothers research and
-              write every pitch, and an Investment Committee of officers and industry alumni votes on each one.
-            </p>
-            <div className="rise mt-10 flex flex-wrap gap-3" style={{ ["--d" as string]: "180ms" }}>
-              <Link href="/approach/" className="btn btn-primary">
-                Our Approach <span aria-hidden>→</span>
-              </Link>
-              <Link href="/structure/" className="btn btn-secondary">
-                How the Fund Is Governed
-              </Link>
-            </div>
-          </div>
-          <div className="rise lg:col-span-5" style={{ ["--d" as string]: "200ms" }}>
-            <Factsheet />
-          </div>
-        </div>
-      </section>
+      {/* Hero: one full-screen photo with the name over it. */}
+      <section id="top" className="relative isolate flex min-h-[100svh] flex-col overflow-hidden">
+        <Image
+          src={hero}
+          alt="Alpha Epsilon Zeta brothers in front of Doe Library, UC Berkeley"
+          fill
+          priority
+          placeholder="blur"
+          sizes="100vw"
+          className="-z-20 object-cover object-[50%_40%] grayscale contrast-[1.1]"
+        />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-black/60" />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_45%_at_50%_50%,rgba(0,0,0,0.55),transparent)]" />
+        <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-t from-bg to-transparent" />
 
-      {/* Key facts */}
-      <section aria-label="Fund at a glance" className="border-b border-rule bg-white">
-        <div className="wrap">
-          <dl className="grid grid-cols-2 gap-px bg-rule md:grid-cols-4">
-            {[
-              ["4", "Strategy pods, each with its own leader"],
-              ["100%", "Of positions approved by committee vote"],
-              [String(site.parent.founded), `${site.parent.name} founded at Berkeley`],
-              ["200+", "AEZ alumni across finance and technology"],
-            ].map(([v, l]) => (
-              <div key={l} className="flex flex-col bg-white py-8 pr-4 md:py-10 [&:nth-child(even)]:pl-5 md:[&:not(:first-child)]:pl-8">
-                <dt className="order-2 mt-3 max-w-[15rem] text-[13.5px] leading-snug text-muted">{l}</dt>
-                <dd className="figure order-1 text-[40px] leading-none text-ink md:text-[48px]">{v}</dd>
-              </div>
-            ))}
-          </dl>
+        <header className="wrap grid grid-cols-2 items-center pt-6 md:grid-cols-3 md:pt-8">
+          <a href="#top" className="label inline-flex items-center gap-3 text-fg" aria-label="Zenith Capital, home">
+            <Mark />
+            <span translate="no">Zenith Capital</span>
+          </a>
+          <p className="label hidden justify-self-center text-dim md:block">
+            Berkeley, CA — <Clock />
+          </p>
+          <a href={mailto} className="label hover-line justify-self-end text-dim">
+            Contact
+          </a>
+        </header>
+
+        <div className="wrap flex flex-1 flex-col items-center justify-center py-24 text-center">
+          <h1
+            translate="no"
+            className="rise text-[clamp(2.75rem,9vw,7.5rem)] font-semibold uppercase leading-[0.95] tracking-[-0.02em]"
+          >
+            Zenith Capital
+          </h1>
+          <p className="rise label mt-6 text-fg/80 md:text-[13px]" style={{ ["--d" as string]: "150ms" }}>
+            The investment fund of Alpha Epsilon Zeta
+          </p>
+        </div>
+
+        <div className="wrap flex items-center justify-between pb-6 md:pb-8">
+          <a
+            href={site.parent.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="label inline-flex items-center gap-2.5 rounded-full border border-line px-4 py-2.5 text-dim transition-colors hover:border-fg/40 hover:text-fg"
+          >
+            <span aria-hidden className="size-1.5 rounded-full bg-gold" />
+            An AEZ fund
+          </a>
+          <a href="#about" className="label hover-line text-dim">
+            Scroll ↓
+          </a>
         </div>
       </section>
 
       {/* About */}
-      <section className="section">
-        <div className="wrap">
-          <SectionHead index="01" eyebrow="The Fund" title="An investment practice built inside a brotherhood.">
-            <p>
-              Over a dozen active brothers of Alpha Epsilon Zeta are pursuing careers in investing. Zenith Capital gives that interest
-              a mandate: real capital, a written process, and alumni who have done the job reviewing the work.
-            </p>
-          </SectionHead>
+      <main id="about" className="wrap scroll-mt-8 pt-20 md:pt-32">
+        <p className="max-w-[24ch] text-[clamp(1.75rem,3.6vw,3rem)] leading-[1.15] tracking-[-0.015em] text-dim md:max-w-[28ch]">
+          <span className="text-fg">Zenith Capital is the student-run investment fund of Alpha Epsilon Zeta at UC Berkeley.</span>{" "}
+          Brothers research and pitch in four strategy pods, and a committee of officers and alumni votes on every position.
+        </p>
 
-          <div className="mt-16 grid gap-px border-y border-rule bg-rule md:mt-20 md:grid-cols-3">
-            {principles.map((p, i) => (
-              <div key={p.title} className="bg-paper py-9 md:px-8 md:first:pl-0 md:last:pr-0" data-reveal="inner" style={{ ["--d" as string]: `${i * 80}ms` }}>
-                <p className="num text-[13px] text-maroon">{String(i + 1).padStart(2, "0")}</p>
-                <h3 className="mt-4 text-[26px]">{p.title}</h3>
-                <p className="mt-3 text-[15.5px] leading-relaxed text-muted">{p.body}</p>
-              </div>
+        <section aria-labelledby="alloc" className="mt-20 md:mt-28">
+          <h2 id="alloc" className="label border-b border-line pb-4 text-faint">
+            Target allocation
+          </h2>
+          <ul className="grid grid-cols-2 md:grid-cols-4">
+            {pods.map((p) => (
+              <li key={p.name} className="border-b border-line py-6 md:border-b-0 md:py-8">
+                <p className="text-[clamp(2rem,4vw,3.25rem)] font-medium tabular-nums leading-none tracking-[-0.02em]">
+                  {p.target}%
+                </p>
+                <p className="label mt-3 text-dim">{p.name}</p>
+              </li>
+            ))}
+          </ul>
+          <div aria-hidden className="flex h-1 gap-1">
+            {pods.map((p, i) => (
+              <div key={p.name} style={{ width: `${p.target}%`, opacity: 1 - i * 0.22 }} className="bg-fg" />
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Strategy */}
-      <section className="section border-t border-rule bg-white">
-        <div className="wrap">
-          <SectionHead index="02" eyebrow="Strategy" title="Four pods. One diversified portfolio.">
-            <p>
-              Each pod runs one core strategy with its own leader, research and pitches. Together they aim for consistent returns
-              with low exposure to the market as a whole.
-            </p>
-          </SectionHead>
-          <div className="mt-14 md:mt-16">
-            <PodGrid />
+        <section aria-labelledby="alumni" className="mt-20 md:mt-28">
+          <h2 id="alumni" className="label border-b border-line pb-4 text-faint">
+            Where AEZ alumni work
+          </h2>
+          <div className="marquee-mask py-8">
+            <ul className="marquee">
+              {[...alumniFirms, ...alumniFirms].map((f, i) => (
+                <li
+                  key={i}
+                  aria-hidden={i >= alumniFirms.length || undefined}
+                  className="whitespace-nowrap px-6 text-[22px] font-medium tracking-[-0.01em] text-dim md:px-9 md:text-[26px]"
+                >
+                  {f}
+                </li>
+              ))}
+            </ul>
           </div>
-          <div className="mt-10">
-            <Link href="/approach/" className="link-arrow">
-              Read the Full Approach <span aria-hidden>→</span>
-            </Link>
-          </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
-      {/* Risk */}
-      <section className="dark section">
-        <div className="wrap">
-          <SectionHead index="03" eyebrow="Risk Mandate" title="Limits written down before the first trade." light>
-            <p>
-              The VP of Investments is accountable for the fund&rsquo;s risk. These limits apply to every position, in every pod.
-            </p>
-          </SectionHead>
-          <div className="mt-14 md:mt-16">
-            <MandateList light />
-          </div>
+      <footer className="wrap mt-16 border-t border-line pb-10 pt-8 md:mt-24">
+        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <p className="label text-faint">© {new Date().getFullYear()} Zenith Capital</p>
+          <nav aria-label="Links" className="label flex flex-wrap gap-x-7 gap-y-3 text-dim">
+            <a href={site.parent.url} target="_blank" rel="noopener noreferrer" className="hover-line">AEZ</a>
+            <a href={site.links.linkedin} target="_blank" rel="noopener noreferrer" className="hover-line">LinkedIn</a>
+            <a href={site.links.instagram} target="_blank" rel="noopener noreferrer" className="hover-line">Instagram</a>
+            <a href={mailto} className="hover-line">Contact</a>
+          </nav>
         </div>
-      </section>
-
-      {/* Process */}
-      <section className="section">
-        <div className="wrap">
-          <SectionHead index="04" eyebrow="Process" title="From thesis to position.">
-            <p>No position enters the portfolio without a written pitch and a committee vote.</p>
-          </SectionHead>
-          <div className="mt-14 md:mt-20">
-            <ProcessSteps />
-          </div>
-        </div>
-      </section>
-
-      {/* People */}
-      <section className="border-t border-rule bg-white">
-        <div className="grid lg:grid-cols-2">
-          <div className="relative min-h-[320px] lg:min-h-[560px]">
-            <Image
-              src={membersPhoto}
-              placeholder="blur"
-              alt="Brothers of Alpha Epsilon Zeta on the UC Berkeley campus"
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover grayscale-[35%]"
-            />
-            <div aria-hidden className="absolute inset-0 bg-navy/20 mix-blend-multiply" />
-          </div>
-          <div className="flex items-center">
-            <div className="max-w-xl px-5 py-16 md:px-16 lg:py-20" data-reveal>
-              <p className="eyebrow">
-                <span className="num mr-3 font-medium opacity-70">05</span>Membership
-              </p>
-              <h2 className="h2 mt-6">Run by brothers. Reviewed by alumni.</h2>
-              <p className="mt-6 text-[17px] leading-relaxed text-muted">
-                Zenith is open to active brothers of {site.parent.name}. Members join a pod after training and an endorsement from
-                its Pod Leader, then put their work in front of an Investment Committee that includes alumni from the industry.
-              </p>
-              <p className="mt-4 text-[17px] leading-relaxed text-muted">
-                Each semester the VP of Investments writes an investor letter on the fund&rsquo;s performance and positions, sent to
-                every active brother and the Alumni Advisory Council.
-              </p>
-              <div className="mt-9 flex flex-wrap gap-x-8 gap-y-4">
-                <Link href="/structure/" className="link-arrow">
-                  Governance <span aria-hidden>→</span>
-                </Link>
-                <Link href="/letters/" className="link-arrow">
-                  Investor Letters <span aria-hidden>→</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Alumni */}
-      <section className="section border-t border-rule">
-        <div className="wrap">
-          <SectionHead index="06" eyebrow="Alumni Network" title="Where AEZ alumni work.">
-            <p>
-              Zenith is part of {site.parent.name}, founded at Berkeley in {site.parent.founded}. Its alumni advise the fund from
-              banks, investment firms and technology companies.
-            </p>
-          </SectionHead>
-          <div className="mt-14 md:mt-16" data-reveal>
-            <AlumniWall />
-          </div>
-        </div>
-      </section>
-
-      <CtaBand
-        eyebrow="Alumni & Advisors"
-        title="Help shape the next generation of investors."
-        body="Alumni with investing experience can join the Alumni Advisory Council, review pitches, and vote with the Investment Committee."
-        href="/contact/"
-        label="Get in Touch"
-      />
+        <p className="mt-8 max-w-[80ch] text-[12px] leading-relaxed text-faint">{disclosure}</p>
+      </footer>
     </>
   );
 }
