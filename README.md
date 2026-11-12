@@ -23,12 +23,12 @@ npm run lint     # type-check
 
 ### Editing
 
-The site is a single page (`app/page.tsx`). Text lives in `content/`:
+The site is one page (`app/page.tsx`) with sections for Approach, Portfolio, Risk, Process, Structure, Alumni, and Contact. Text lives in `content/`:
 
 | File | What it holds |
 | --- | --- |
 | `site.ts` | Name, URL, contact email, links, footer disclosure |
-| `fund.ts` | Target allocation by pod, alumni firms |
+| `fund.ts` | Pods and target allocations, risk limits, principles, process steps, roles, alumni firms |
 
 The hero photo is `public/images/members.jpg`. Replace that file to change it.
 

@@ -1,131 +1,254 @@
 import Image from "next/image";
-import { Mark } from "@/components/Brand";
-import Clock from "@/components/Clock";
-import { alumniFirms, pods } from "@/content/fund";
-import { disclosure, site } from "@/content/site";
-import hero from "@/public/images/members.jpg";
+import Link from "next/link";
+import { AlumniWall, AllocationBar, MandateList, PodGrid, ProcessSteps, SectionHead } from "@/components/Blocks";
+import StructureDiagram from "@/components/StructureDiagram";
+import { pods, principles, roles } from "@/content/fund";
+import { site } from "@/content/site";
+import membersPhoto from "@/public/images/members.jpg";
 
-const mailto = `mailto:${site.email}?subject=Zenith%20Capital`;
+const contacts = [
+  {
+    title: "Alumni",
+    body: "If you work in investing and want to review pitches or join the Alumni Advisory Council, email us.",
+    subject: "Alumni Advisory Council",
+    cta: "Email about the council",
+  },
+  {
+    title: "Recruiters",
+    body: "We can confirm a member's role on the fund and explain what pod members work on.",
+    subject: "Recruiting inquiry",
+    cta: "Email the fund",
+  },
+  {
+    title: "AEZ brothers",
+    body: "To join a pod next semester, ask about training and the endorsement process.",
+    subject: "Joining a pod",
+    cta: "Email about joining",
+  },
+];
+
+const mail = (subject: string) => `mailto:${site.email}?subject=${encodeURIComponent(`Zenith Capital: ${subject}`)}`;
 
 export default function Home() {
   return (
     <>
-      {/* Hero: one full-screen photo with the name over it. */}
-      <section id="top" className="relative isolate flex min-h-[100svh] flex-col overflow-hidden">
+      {/* Hero */}
+      <section className="relative isolate flex min-h-[min(86svh,820px)] items-end overflow-hidden bg-navy-deep">
         <Image
-          src={hero}
-          alt="Alpha Epsilon Zeta brothers in front of Doe Library, UC Berkeley"
+          src={membersPhoto}
+          alt="Brothers of Alpha Epsilon Zeta in front of Doe Library, UC Berkeley"
           fill
           priority
           placeholder="blur"
           sizes="100vw"
-          className="-z-20 object-cover object-[50%_40%] grayscale contrast-[1.1]"
+          className="-z-20 object-cover object-[50%_35%]"
         />
-        <div aria-hidden className="absolute inset-0 -z-10 bg-black/60" />
-        <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_45%_at_50%_50%,rgba(0,0,0,0.55),transparent)]" />
-        <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-t from-bg to-transparent" />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-deep via-navy-deep/70 to-navy-deep/10" />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-deep/80 via-navy-deep/30 to-transparent" />
 
-        <header className="wrap grid grid-cols-2 items-center pt-6 md:grid-cols-3 md:pt-8">
-          <a href="#top" className="label inline-flex items-center gap-3 text-fg" aria-label="Zenith Capital, home">
-            <Mark />
-            <span translate="no">Zenith Capital</span>
-          </a>
-          <p className="label hidden justify-self-center text-dim md:block">
-            Berkeley, CA — <Clock />
-          </p>
-          <a href={mailto} className="label hover-line justify-self-end text-dim">
-            Contact
-          </a>
-        </header>
-
-        <div className="wrap flex flex-1 flex-col items-center justify-center py-24 text-center">
-          <h1
-            translate="no"
-            className="rise text-[clamp(2.75rem,9vw,7.5rem)] font-semibold uppercase leading-[0.95] tracking-[-0.02em]"
-          >
-            Zenith Capital
+        <div className="wrap pb-16 pt-40 md:pb-24">
+          <p className="eyebrow eyebrow-light rise">Alpha Epsilon Zeta · UC Berkeley</p>
+          <h1 className="display rise mt-5 max-w-3xl !text-white" style={{ ["--d" as string]: "60ms" }}>
+            The investment fund of Alpha Epsilon Zeta.
           </h1>
-          <p className="rise label mt-6 text-fg/80 md:text-[13px]" style={{ ["--d" as string]: "150ms" }}>
-            The investment fund of Alpha Epsilon Zeta
+          <p className="rise mt-7 max-w-xl text-[18px] leading-relaxed text-white/80 md:text-[20px]" style={{ ["--d" as string]: "120ms" }}>
+            Brothers research and pitch investments across four strategy pods. An investment committee of officers and
+            alumni votes on every position.
           </p>
-        </div>
-
-        <div className="wrap flex items-center justify-between pb-6 md:pb-8">
-          <a
-            href={site.parent.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="label inline-flex items-center gap-2.5 rounded-full border border-line px-4 py-2.5 text-dim transition-colors hover:border-fg/40 hover:text-fg"
-          >
-            <span aria-hidden className="size-1.5 rounded-full bg-gold" />
-            An AEZ fund
-          </a>
-          <a href="#about" className="label hover-line text-dim">
-            Scroll ↓
-          </a>
+          <div className="rise mt-10 flex flex-wrap gap-3" style={{ ["--d" as string]: "180ms" }}>
+            <Link href="/#approach" className="btn btn-light">
+              How We Invest <span aria-hidden>→</span>
+            </Link>
+            <Link href="/#contact" className="btn btn-ghost-light">
+              Contact
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* About */}
-      <main id="about" className="wrap scroll-mt-8 pt-20 md:pt-32">
-        <p className="max-w-[24ch] text-[clamp(1.75rem,3.6vw,3rem)] leading-[1.15] tracking-[-0.015em] text-dim md:max-w-[28ch]">
-          <span className="text-fg">Zenith Capital is the student-run investment fund of Alpha Epsilon Zeta at UC Berkeley.</span>{" "}
-          Brothers research and pitch in four strategy pods, and a committee of officers and alumni votes on every position.
-        </p>
-
-        <section aria-labelledby="alloc" className="mt-20 md:mt-28">
-          <h2 id="alloc" className="label border-b border-line pb-4 text-faint">
-            Target allocation
-          </h2>
-          <ul className="grid grid-cols-2 md:grid-cols-4">
-            {pods.map((p) => (
-              <li key={p.name} className="border-b border-line py-6 md:border-b-0 md:py-8">
-                <p className="text-[clamp(2rem,4vw,3.25rem)] font-medium tabular-nums leading-none tracking-[-0.02em]">
-                  {p.target}%
-                </p>
-                <p className="label mt-3 text-dim">{p.name}</p>
-              </li>
+      {/* Key facts */}
+      <section aria-label="Fund at a glance" className="border-b border-rule bg-white">
+        <div className="wrap">
+          <dl className="grid grid-cols-2 gap-px bg-rule md:grid-cols-4">
+            {[
+              ["4", "Strategy pods, each with its own leader"],
+              ["5", "Risk limits that apply to every position"],
+              ["50%", "Target allocation to long/short equity"],
+              [String(site.parent.founded), `Year ${site.parent.name} was founded at Berkeley`],
+            ].map(([v, l]) => (
+              <div key={l} className="flex flex-col bg-white py-8 pr-4 md:py-10 [&:nth-child(even)]:pl-5 md:[&:not(:first-child)]:pl-8">
+                <dt className="order-2 mt-3 max-w-[15rem] text-[13.5px] leading-snug text-muted">{l}</dt>
+                <dd className="figure order-1 text-[40px] leading-none text-ink md:text-[48px]">{v}</dd>
+              </div>
             ))}
-          </ul>
-          <div aria-hidden className="flex h-1 gap-1">
-            {pods.map((p, i) => (
-              <div key={p.name} style={{ width: `${p.target}%`, opacity: 1 - i * 0.22 }} className="bg-fg" />
+          </dl>
+        </div>
+      </section>
+
+      {/* Approach */}
+      <section id="approach" className="section">
+        <div className="wrap">
+          <SectionHead index="01" eyebrow="Approach" title="How the fund invests.">
+            <p>
+              Zenith invests part of AEZ&rsquo;s own funds. Members split into four pods, each running one strategy, and every
+              position starts with research that the rest of the fund can read.
+            </p>
+          </SectionHead>
+
+          <div className="mt-16 grid gap-px border-y border-rule bg-rule md:mt-20 md:grid-cols-3">
+            {principles.map((p, i) => (
+              <div key={p.title} className="bg-paper py-9 md:px-8 md:first:pl-0 md:last:pr-0" data-reveal="inner" style={{ ["--d" as string]: `${i * 80}ms` }}>
+                <p className="num text-[13px] text-maroon">{String(i + 1).padStart(2, "0")}</p>
+                <h3 className="mt-4 text-[26px]">{p.title}</h3>
+                <p className="mt-3 text-[15.5px] leading-relaxed text-muted">{p.body}</p>
+              </div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section aria-labelledby="alumni" className="mt-20 md:mt-28">
-          <h2 id="alumni" className="label border-b border-line pb-4 text-faint">
-            Where AEZ alumni work
-          </h2>
-          <div className="marquee-mask py-8">
-            <ul className="marquee">
-              {[...alumniFirms, ...alumniFirms].map((f, i) => (
-                <li
-                  key={i}
-                  aria-hidden={i >= alumniFirms.length || undefined}
-                  className="whitespace-nowrap px-6 text-[22px] font-medium tracking-[-0.01em] text-dim md:px-9 md:text-[26px]"
-                >
-                  {f}
+      {/* Portfolio */}
+      <section id="portfolio" className="section border-t border-rule bg-white">
+        <div className="wrap">
+          <SectionHead index="02" eyebrow="Portfolio" title="Target allocation by pod.">
+            <p>
+              Each pod has a target share of the portfolio. A pod&rsquo;s share can move up to 10 points from its target,
+              depending on how it performs.
+            </p>
+          </SectionHead>
+
+          <div className="mt-14 md:mt-16" data-reveal>
+            <AllocationBar height={22} />
+            <ul className="mt-5 flex flex-wrap gap-x-8 gap-y-2 text-[14px] text-muted">
+              {pods.map((p) => (
+                <li key={p.id} className="inline-flex items-center gap-2.5">
+                  <span aria-hidden className="h-2.5 w-2.5" style={{ background: p.color }} />
+                  {p.name} <span className="num text-ink">{p.target}%</span>
                 </li>
               ))}
             </ul>
           </div>
-        </section>
-      </main>
 
-      <footer className="wrap mt-16 border-t border-line pb-10 pt-8 md:mt-24">
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <p className="label text-faint">© {new Date().getFullYear()} Zenith Capital</p>
-          <nav aria-label="Links" className="label flex flex-wrap gap-x-7 gap-y-3 text-dim">
-            <a href={site.parent.url} target="_blank" rel="noopener noreferrer" className="hover-line">AEZ</a>
-            <a href={site.links.linkedin} target="_blank" rel="noopener noreferrer" className="hover-line">LinkedIn</a>
-            <a href={site.links.instagram} target="_blank" rel="noopener noreferrer" className="hover-line">Instagram</a>
-            <a href={mailto} className="hover-line">Contact</a>
-          </nav>
+          <div className="mt-14">
+            <PodGrid detailed />
+          </div>
         </div>
-        <p className="mt-8 max-w-[80ch] text-[12px] leading-relaxed text-faint">{disclosure}</p>
-      </footer>
+      </section>
+
+      {/* Risk */}
+      <section className="dark section">
+        <div className="wrap">
+          <SectionHead index="03" eyebrow="Risk" title="Risk limits." light>
+            <p>
+              These limits apply to every pod. The VP of Investments monitors them and is responsible for keeping the fund
+              inside them.
+            </p>
+          </SectionHead>
+          <div className="mt-14 md:mt-16">
+            <MandateList light />
+          </div>
+        </div>
+      </section>
+
+      {/* Process */}
+      <section id="process" className="section">
+        <div className="wrap">
+          <SectionHead index="04" eyebrow="Process" title="From research to a committee vote.">
+            <p>Every position goes through the same five steps.</p>
+          </SectionHead>
+          <div className="mt-14 md:mt-20">
+            <ProcessSteps />
+          </div>
+        </div>
+      </section>
+
+      {/* Structure */}
+      <section id="structure" className="section border-t border-rule bg-white">
+        <div className="wrap">
+          <SectionHead index="05" eyebrow="Structure" title="Who makes the decisions.">
+            <p>
+              The VP of Investments is elected by AEZ each year and appoints the Pod Leaders. The VP and the Alumni Advisory
+              Council form the Investment Committee, which votes on every pitch.
+            </p>
+          </SectionHead>
+          <div className="mt-14 border border-rule bg-paper p-4 md:mt-16 md:p-10" data-reveal>
+            <StructureDiagram />
+          </div>
+
+          <div className="mt-16 border-t border-rule">
+            {roles.map((r, i) => (
+              <article
+                key={r.title}
+                data-reveal
+                style={{ ["--d" as string]: `${i * 60}ms` }}
+                className="grid gap-4 border-b border-rule py-8 md:grid-cols-12 md:gap-8"
+              >
+                <div className="md:col-span-4">
+                  <h3 className="text-[24px]">{r.title}</h3>
+                  <p className="mt-2 text-[13px] font-semibold uppercase tracking-[0.1em] text-maroon">{r.term}</p>
+                </div>
+                <p className="text-[16px] leading-relaxed text-muted md:col-span-4">{r.body}</p>
+                <ul className="space-y-2 text-[15px] text-text md:col-span-4">
+                  {r.duties.map((d) => (
+                    <li key={d} className="flex gap-3">
+                      <span aria-hidden className="mt-[12px] h-px w-3 shrink-0 bg-maroon" />
+                      {d}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Alumni */}
+      <section className="section border-t border-rule">
+        <div className="wrap">
+          <SectionHead index="06" eyebrow="Alumni" title="Where AEZ alumni work.">
+            <p>
+              {site.parent.name} was founded at Berkeley in {site.parent.founded}. Alumni at these firms advise the fund and
+              review pitches.
+            </p>
+          </SectionHead>
+          <div className="mt-14 md:mt-16" data-reveal>
+            <AlumniWall />
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="dark section relative overflow-hidden">
+        <svg aria-hidden className="pointer-events-none absolute -right-24 bottom-0 h-[420px] w-[720px] opacity-[0.07]" viewBox="0 0 720 420">
+          <path d="M0 420 360 40l360 380" fill="none" stroke="#fff" strokeWidth="2" />
+          <path d="M120 420 360 166l240 254" fill="none" stroke="#fff" strokeWidth="1" />
+          <circle cx="360" cy="14" r="9" fill="#fff" />
+        </svg>
+        <div className="wrap relative">
+          <SectionHead index="07" eyebrow="Contact" title="Get in touch." light>
+            <p>
+              Email{" "}
+              <a href={`mailto:${site.email}`} className="text-white underline decoration-white/30 underline-offset-4 hover:decoration-white">
+                {site.email}
+              </a>
+              . The VP of Investments or a Pod Leader will reply.
+            </p>
+          </SectionHead>
+
+          <div className="mt-14 grid gap-px bg-white/10 md:mt-16 md:grid-cols-3">
+            {contacts.map((c, i) => (
+              <div key={c.title} className="flex flex-col bg-navy-deep py-9 md:px-8 md:first:pl-0 md:last:pr-0" data-reveal="inner" style={{ ["--d" as string]: `${i * 80}ms` }}>
+                <p className="num text-[13px] text-[#d9b9be]">{String(i + 1).padStart(2, "0")}</p>
+                <h3 className="mt-4 text-[26px]">{c.title}</h3>
+                <p className="mt-3 flex-1 text-[15.5px] leading-relaxed text-white/65">{c.body}</p>
+                <a href={mail(c.subject)} className="link-arrow mt-8 self-start !text-white hover:!text-[#d9b9be]">
+                  {c.cta} <span aria-hidden>→</span>
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 }

@@ -6,6 +6,12 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default function Image() {
+  const bars = [
+    ["#102a4c", 50],
+    ["#7d1f2b", 25],
+    ["#5d7290", 15],
+    ["#b08d4f", 10],
+  ] as const;
   return new ImageResponse(
     (
       <div
@@ -14,16 +20,28 @@ export default function Image() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "#0b0b0b",
-          color: "#f2f2f0",
-          fontFamily: "sans-serif",
+          justifyContent: "space-between",
+          padding: 80,
+          background: "#fbfaf7",
+          color: "#0d1726",
+          fontFamily: "serif",
         }}
       >
-        <div style={{ fontSize: 112, fontWeight: 700, letterSpacing: -2 }}>ZENITH CAPITAL</div>
-        <div style={{ fontSize: 26, marginTop: 28, letterSpacing: 3, color: "rgba(242,242,240,0.6)" }}>
-          THE INVESTMENT FUND OF ALPHA EPSILON ZETA
+        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+          <div style={{ width: 56, height: 56, background: "#102a4c", display: "flex" }} />
+          <div style={{ fontSize: 34, letterSpacing: 6 }}>ZENITH CAPITAL</div>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ fontSize: 76, lineHeight: 1.05 }}>The investment fund of</div>
+          <div style={{ fontSize: 76, lineHeight: 1.05 }}>Alpha Epsilon Zeta.</div>
+          <div style={{ display: "flex", gap: 6, marginTop: 48, width: 1040 }}>
+            {bars.map(([c, w]) => (
+              <div key={c} style={{ width: `${w}%`, height: 16, background: c }} />
+            ))}
+          </div>
+          <div style={{ fontSize: 24, marginTop: 24, color: "#5f6878", fontFamily: "sans-serif" }}>
+            Long/short equity · Sector ETFs · Fixed income · Derivatives
+          </div>
         </div>
       </div>
     ),
