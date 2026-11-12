@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://pragyanr.github.io/Zenith_Capital/sitemap.xml
